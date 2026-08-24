@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Javascript Stars - 3D Starfield</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background: radial-gradient(circle at center, #15002a 0%, #080015 60%, #010005 100%);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      color: #fff;
+    }
+
+    #canvas-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+
+    /* UI Header Overlay */
+    .header-overlay {
+      position: absolute;
+      top: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      text-align: center;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    .title {
+      font-size: 2.4rem;
+      font-weight: 800;
+      letter-spacing: 2px;
+      background: linear-gradient(135deg, #ffffff 0%, #ff80df 50%, #00f0ff 100%);
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 30px rgba(255, 0, 180, 0.6);
+    }
+
+    .subtitle {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.6);
+      margin-top: 6px;
+      letter-spacing: 1px;
+    }
+
+    /* Floating Controls Bar */
+    .controls-panel {
+      position: absolute;
+      bottom: 25px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+      background: rgba(20, 10, 35, 0.75);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 40px;
+      padding: 10px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    .control-btn {
+      background: rgba(255, 255, 255, 0.08);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 20px;
+      padding: 7px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .control-btn:hover {
+      background: rgba(255, 0, 180, 0.3);
+      border-color: rgba(255, 0, 180, 0.6);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(255, 0, 180, 0.4);
+    }
+
+    .slider-group {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.82rem;
+      color: rgba(255, 255, 255, 0.75);
+    }
+
+    .slider-group input[type="range"] {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 90px;
+      height: 5px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 5px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .slider-group input[type="range"]::-webkit-slider-thumb {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #ff007f;
+      cursor: pointer;
+      box-shadow: 0 0 8px #ff007f;
+    }
+
+    @media (max-width: 600px) {
+      .title { font-size: 1.7rem; }
+      .controls-panel { flex-wrap: wrap; justify-content: center; width: 90%; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header-overlay">
+    <h1 class="title">Javascript Stars</h1>
+    <p class="subtitle">Move cursor to tilt ✦ Interactive 3D Starfield</p>
+  </div>
+
+  <div id="canvas-container"></div>
+
+  <!-- Interactive Controls -->
+  <div class="controls-panel">
+    <button class="control-btn" id="warpBtn">🚀 Warp Speed</button>
+    <button class="control-btn" id="colorModeBtn">🎨 Palette Swap</button>
+    <div class="slider-group">
+      <span>Speed</span>
+      <input type="range" id="speedSlider" min="0.1" max="3" step="0.1" value="0.6">
+    </div>
+  </div>
+
+  <!-- Three.js CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <script>
+    // ==========================================
+    // 1. Core Scene Setup (Matches Your Screenshot)
+    // ==========================================
+    const container = document.getElementById("canvas-container");
+    const scene = new THREE.Scene();
+    const universe = new THREE.Group();
+    scene.add(universe);
+
+    const camera = new THREE.PerspectiveCamera(
+      60,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      2000
+    );
+    camera.position.set(0, 0, 100);
+
+    const renderer = new THREE.WebGLRenderer({
+      antialias: true,
+      alpha: true,
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    container.appendChild(renderer.domElement);
+
+    const clock = new THREE.Clock();
+
+    // ==========================================
+    // 2. Procedural 4-Point Sparkling Star Texture
+    // ==========================================
+    function createSparkleStarTexture() {
+      const canvas = document.createElement("canvas");
+      canvas.width = 128;
+      canvas.height = 128;
+      const ctx = canvas.getContext("2d");
+      const center = 64;
+
+      // Soft circular radial glow
+      const radialGlow = ctx.createRadialGradient(center, center, 0, center, center, 60);
+      radialGlow.addColorStop(0, "rgba(255, 255, 255, 1)");
+      radialGlow.addColorStop(0.12, "rgba(255, 255, 255, 0.85)");
+      radialGlow.addColorStop(0.35, "rgba(255, 255, 255, 0.25)");
+      radialGlow.addColorStop(0.7, "rgba(255, 255, 255, 0.05)");
+      radialGlow.addColorStop(1, "rgba(255, 255, 255, 0)");
+      ctx.fillStyle = radialGlow;
+      ctx.fillRect(0, 0, 128, 128);
+
+      // Horizontal sharp cross flare
+      const hGrad = ctx.createLinearGradient(0, center, 128, center);
+      hGrad.addColorStop(0, "rgba(255, 255, 255, 0)");
+      hGrad.addColorStop(0.5, "rgba(255, 255, 255, 1)");
+      hGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+      ctx.fillStyle = hGrad;
+      ctx.fillRect(0, center - 2, 128, 4);
+
+      // Vertical sharp cross flare
+      const vGrad = ctx.createLinearGradient(center, 0, center, 128);
+      vGrad.addColorStop(0, "rgba(255, 255, 255, 0)");
+      vGrad.addColorStop(0.5, "rgba(255, 255, 255, 1)");
+      vGrad.addColorStop(1, "rgba(255, 255, 255, 0)");
+      ctx.fillStyle = vGrad;
+      ctx.fillRect(center - 2, 0, 4, 128);
+
+      // Bright white central star nucleus
+      ctx.fillStyle = "#ffffff";
+      ctx.beginPath();
+      ctx.arc(center, center, 3.5, 0, Math.PI * 2);
+      ctx.fill();
+
+      return new THREE.CanvasTexture(canvas);
+    }
+
+    const starTexture = createSparkleStarTexture();
+
+    // ==========================================
+    // 3. Neon Color Palettes
+    // ==========================================
+    const palettes = {
+      cosmic: [
+        new THREE.Color("#ff007f"), // Neon Magenta
+        new THREE.Color("#ff1493"), // Deep Pink
+        new THREE.Color("#00f0ff"), // Electric Cyan
+        new THREE.Color("#00ff66"), // Neon Lime Green
+        new THREE.Color("#ffe600"), // Bright Gold/Yellow
+        new THREE.Color("#ff5500"), // Radiant Orange
+        new THREE.Color("#a855f7"), // Vivid Purple
+        new THREE.Color("#ffffff"), // Pure White
+        new THREE.Color("#38bdf8"), // Sky Blue
+      ],
+      cyberpunk: [
+        new THREE.Color("#ff0055"),
+        new THREE.Color("#00ffff"),
+        new THREE.Color("#ffdd00"),
+        new THREE.Color("#7928ca"),
+        new THREE.Color("#ffffff"),
+      ],
+      deepSpace: [
+        new THREE.Color("#60a5fa"),
+        new THREE.Color("#c084fc"),
+        new THREE.Color("#f472b6"),
+        new THREE.Color("#38bdf8"),
+        new THREE.Color("#ffffff"),
+      ]
+    };
+
+    let activePaletteKey = "cosmic";
+
+    // ==========================================
+    // 4. Create Main 4-Point Sparkling Starfield
+    // ==========================================
+    const starCount = 1400;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(starCount * 3);
+    const colors = new Float32Array(starCount * 3);
+    const baseScales = new Float32Array(starCount);
+
+    function populateStarColors() {
+      const palette = palettes[activePaletteKey];
+      for (let i = 0; i < starCount; i++) {
+        const c = palette[Math.floor(Math.random() * palette.length)];
+        colors[i * 3] = c.r;
+        colors[i * 3 + 1] = c.g;
+        colors[i * 3 + 2] = c.b;
+      }
+      geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+      if (geometry.attributes.color) geometry.attributes.color.needsUpdate = true;
+    }
+
+    for (let i = 0; i < starCount; i++) {
+      positions[i * 3] = (Math.random() - 0.5) * 900;
+      positions[i * 3 + 1] = (Math.random() - 0.5) * 900;
+      positions[i * 3 + 2] = (Math.random() - 0.5) * 1100;
+      baseScales[i] = Math.random() * 0.8 + 0.4;
+    }
+
+    geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+    populateStarColors();
+
+    const starMaterial = new THREE.PointsMaterial({
+      size: 18,
+      map: starTexture,
+      transparent: true,
+      blending: THREE.AdditiveBlending,
+      vertexColors: true,
+      depthWrite: false,
+    });
+
+    const starField = new THREE.Points(geometry, starMaterial);
+    universe.add(starField);
+
+    // ==========================================
+    // 5. Background Ambient Dust / Small Stars
+    // ==========================================
+    const dustCount = 2500;
+    const dustGeo = new THREE.BufferGeometry();
+    const dustPos = new Float32Array(dustCount * 3);
+    const dustColors = new Float32Array(dustCount * 3);
+
+    for (let i = 0; i < dustCount; i++) {
+      dustPos[i * 3] = (Math.random() - 0.5) * 1600;
+      dustPos[i * 3 + 1] = (Math.random() - 0.5) * 1600;
+      dustPos[i * 3 + 2] = (Math.random() - 0.5) * 1600;
+
+      const palette = palettes.cosmic;
+      const c = palette[Math.floor(Math.random() * palette.length)];
+      dustColors[i * 3] = c.r;
+      dustColors[i * 3 + 1] = c.g;
+      dustColors[i * 3 + 2] = c.b;
+    }
+
+    dustGeo.setAttribute("position", new THREE.BufferAttribute(dustPos, 3));
+    dustGeo.setAttribute("color", new THREE.BufferAttribute(dustColors, 3));
+
+    const dustMaterial = new THREE.PointsMaterial({
+      size: 2.2,
+      transparent: true,
+      opacity: 0.55,
+      vertexColors: true,
+      blending: THREE.AdditiveBlending,
+      depthWrite: false,
+    });
+
+    const dustField = new THREE.Points(dustGeo, dustMaterial);
+    universe.add(dustField);
+
+    // ==========================================
+    // 6. Mouse Interaction & Tilt Parallax
+    // ==========================================
+    let mouseX = 0, mouseY = 0;
+    let targetX = 0, targetY = 0;
+
+    window.addEventListener("mousemove", (event) => {
+      mouseX = (event.clientX - window.innerWidth / 2) * 0.09;
+      mouseY = (event.clientY - window.innerHeight / 2) * 0.09;
+    });
+
+    // Touch support for mobile devices
+    window.addEventListener("touchmove", (event) => {
+      if (event.touches.length > 0) {
+        mouseX = (event.touches[0].clientX - window.innerWidth / 2) * 0.09;
+        mouseY = (event.touches[0].clientY - window.innerHeight / 2) * 0.09;
+      }
+    }, { passive: true });
+
+    // ==========================================
+    // 7. Interactive Controls & Speed
+    // ==========================================
+    let travelSpeed = 0.6;
+    let isWarping = false;
+
+    const speedSlider = document.getElementById("speedSlider");
+    speedSlider.addEventListener("input", (e) => {
+      travelSpeed = parseFloat(e.target.value);
+    });
+
+    const warpBtn = document.getElementById("warpBtn");
+    warpBtn.addEventListener("click", () => {
+      isWarping = !isWarping;
+      warpBtn.textContent = isWarping ? "🛑 Normal Speed" : "🚀 Warp Speed";
+      warpBtn.style.background = isWarping ? "rgba(0, 240, 255, 0.4)" : "";
+    });
+
+    const colorModeBtn = document.getElementById("colorModeBtn");
+    const paletteKeys = Object.keys(palettes);
+    colorModeBtn.addEventListener("click", () => {
+      const currentIndex = paletteKeys.indexOf(activePaletteKey);
+      activePaletteKey = paletteKeys[(currentIndex + 1) % paletteKeys.length];
+      populateStarColors();
+      colorModeBtn.textContent = `🎨 ${activePaletteKey.toUpperCase()}`;
+    });
+
+    // ==========================================
+    // 8. Main Animation Loop
+    // ==========================================
+    function animate() {
+      requestAnimationFrame(animate);
+
+      const elapsedTime = clock.getElapsedTime();
+      const currentSpeed = isWarping ? travelSpeed * 6 : travelSpeed;
+
+      // Smooth camera interpolation
+      targetX += (mouseX - targetX) * 0.05;
+      targetY += (mouseY - targetY) * 0.05;
+      camera.position.x = targetX;
+      camera.position.y = -targetY;
+      camera.lookAt(scene.position);
+
+      // Slow cosmic galaxy spin
+      universe.rotation.y = elapsedTime * 0.035;
+      universe.rotation.x = Math.sin(elapsedTime * 0.02) * 0.04;
+      universe.rotation.z = Math.cos(elapsedTime * 0.015) * 0.03;
+
+      // Pulsing / twinkling star size
+      starMaterial.size = (isWarping ? 24 : 17) + Math.sin(elapsedTime * 3.5) * 3;
+
+      // Forward travel depth motion
+      const posArray = starField.geometry.attributes.position.array;
+      for (let i = 2; i < posArray.length; i += 3) {
+        posArray[i] += currentSpeed;
+        if (posArray[i] > 180) {
+          posArray[i] = -900; // recycle star back to far distance
+        }
+      }
+      starField.geometry.attributes.position.needsUpdate = true;
+
+      // Slow dust drift
+      dustField.rotation.y = elapsedTime * -0.015;
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // ==========================================
+    // 9. Window Resize Handling
+    // ==========================================
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    });
+  </script>
+</body>
+</html>

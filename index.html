@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfolio of a passionate web developer showcasing skills, projects, and contact information.">
+    <title>My Portfolio | Web Developer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+    <!-- ========== HEADER / NAVIGATION ========== -->
+    <header class="portfolio-header" id="header">
+        <div class="logo">
+            <a href="#home" class="logo-link nav-trigger" data-section="home" aria-label="My Portfolio Homepage">
+                <h2 class="logo-brand">
+                    <span class="logo-word-my">My</span>
+                    <span class="logo-word-portfolio">Portfolio</span>
+                </h2>
+                <span class="logo-dot"></span>
+            </a>
+        </div>
+        <nav id="navMenu" class="floating-pill-nav">
+            <ul>
+                <li>
+                    <a href="#home" class="nav-link active" data-section="home">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                            <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                        </svg>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#about" class="nav-link" data-section="about">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        <span>About</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#skills" class="nav-link" data-section="skills">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect>
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path>
+                        </svg>
+                        <span>Skills</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#projects" class="nav-link" data-section="projects">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+                            </path>
+                        </svg>
+                        <span>Projects</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#contact" class="nav-link" data-section="contact">
+                        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="22" y1="2" x2="11" y2="13"></line>
+                            <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                        </svg>
+                        <span>Contact</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="header-actions">
+            <!-- Dark/Light Mode Toggle Button -->
+            <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle dark/light mode">
+                <span class="mode-icon">🌙</span>
+            </button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Toggle navigation menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ========== MAIN WRAPPER (No Outer Scroll) ========== -->
+    <main class="portfolio-main">
+
+        <!-- ========== HERO SECTION ========== -->
+        <section id="home" class="portfolio-section active">
+            <div class="hero-bg-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+            </div>
+            <div class="section-content hero-content">
+                <div class="hero-avatar-wrapper">
+                    <img src="images/ID.png" alt="Profile Picture" class="hero-avatar">
+                    <div class="avatar-ring"></div>
+                </div>
+                <p class="hero-greeting">Hello, I'm</p>
+                <h1 class="hero-name">Sokun En</h1>
+                <h2 class="hero-title">
+                    <span class="typing-text">Computer Science Student</span>
+                </h2>
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-icon-wrapper">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+                                </path>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number">5+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-icon-wrapper">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <polyline points="12 6 12 12 16 14"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number">0+</span>
+                            <span class="stat-label">Years Exp</span>
+                        </div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item radial-stat-item" id="languagesStatItem" tabindex="0" role="button"
+                        aria-haspopup="true" aria-expanded="false" aria-label="Explore programming languages">
+                        <div class="stat-icon-wrapper">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="16 18 22 12 16 6"></polyline>
+                                <polyline points="8 6 2 12 8 18"></polyline>
+                            </svg>
+                        </div>
+                        <div class="stat-content">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Languages</span>
+                        </div>
+
+                        <!-- Orbital Radial Language Menu -->
+                        <div class="radial-orbit-menu" id="languagesOrbitMenu" role="menu"
+                            aria-label="Programming Languages Wheel">
+                            <!-- Invisible safe hover zone -->
+                            <div class="radial-safe-zone"></div>
+
+                            <!-- Central Floating Hub -->
+                            <div class="radial-center-hub" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                    stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="16 18 22 12 16 6"></polyline>
+                                    <polyline points="8 6 2 12 8 18"></polyline>
+                                </svg>
+                            </div>
+
+                            <!-- 1. Python (Top) -->
+                            <div class="radial-orbit-item item-1" role="menuitem" data-tooltip="Python">
+                                <div class="orbit-disc">
+                                    <svg viewBox="0 0 24 24" width="22" height="22">
+                                        <path fill="#3776AB"
+                                            d="M11.9 2c-5 0-4.7 2.2-4.7 2.2l.01 2.3h4.8v.7H5.2S2 7.6 2 11.9c0 4.3 2.8 4.5 2.8 4.5h1.6V14s-.1-2.8 2.7-2.8h4.7s2.6 0 2.6-2.6V5.3s.4-3.3-4.5-3.3zm-2.6 1.5c.5 0 .9.4.9.9s-.4.9-.9.9-.9-.4-.9-.9.4-.9.9-.9z" />
+                                        <path fill="#FFD438"
+                                            d="M12.1 22c5 0 4.7-2.2 4.7-2.2l-.01-2.3H12v-.7h6.8s3.2-.4 3.2-4.7c0-4.3-2.8-4.5-2.8-4.5h-1.6V10s.1 2.8-2.7 2.8H10.2s-2.6 0-2.6 2.6v3.3s-.4 3.3 4.5 3.3zm2.6-1.5c-.5 0-.9-.4-.9-.9s.4-.9.9-.9.9.4.9.9-.4.9-.9.9z" />
+                                    </svg>
+                                </div>
+                                <span class="orbit-tooltip">Python</span>
+                            </div>
+
+                            <!-- 2. Java (Top-Right) -->
+                            <div class="radial-orbit-item item-2" role="menuitem" data-tooltip="Java">
+                                <div class="orbit-disc">
+                                    <svg viewBox="0 0 32 32" width="24" height="24">
+                                        <path fill="#EA2D2E" d="M11.5 22.8c-2.4.2-4.4-.7-4.6-.8-.3-.2.3-.5 1.1-.6 3.1-.7 6.8.2 8.6.7.9.4-1.2.7-5.1.7zm1.6 3.4c-4.2.3-6.9-.7-7.2-.9-.4-.2.5-.6 1.6-.8 4.5-.8 10.4.1 13 .9 1 .4-1.8 1.8-7.4.8zm11.7-9.9c2.5 2.5-.7 4.9-.7 4.9s4-2 2.1-4.3c-2-2.3-3.6-3.4-7.6-5.2-3.1-1.4-4.5-2.7-4.5-2.7s1.1.9 3.6 1.6c3.8 1.2 5.6 2 7.1 5.7zm-5-10.3c2 2 0 4 0 4s2.5-1.4 1.8-3.6c-.9-2-3.1-3.1-4.1-4.7-.9-1.4-.7-2.7-.7-2.7s-.5 1.4.5 3.1c1.1 1.6 1.6 2.9 2.5 3.9z"/>
+                                        <path fill="#007396" d="M21.5 24.5c5.7-.4 9.5-2 9.5-2s-1.1.7-4.3 1.3c-4.5.7-9.5.7-13.8 0-2-.4-2.9-.7-2.9-.7s.7.5 2.9.9c2.7.4 5.7.5 8.6.5zm-9.7 6.3c6.1-.4 9.9-2 9.9-2s-1.1.7-4.5 1.3c-4.7.7-9.9.7-14.4 0-2.2-.4-3.1-.7-3.1-.7s.7.5 3.1.9c2.7.4 5.9.5 9 .5z"/>
+                                    </svg>
+                                </div>
+                                <span class="orbit-tooltip">Java</span>
+                            </div>
+
+                            <!-- 3. JavaScript (Right-Top) -->
+                            <div class="radial-orbit-item item-3" role="menuitem" data-tooltip="JavaScript">
+                                <div class="orbit-disc">
+                                    <svg viewBox="0 0 24 24" width="22" height="22">
+                                        <rect width="24" height="24" rx="4" fill="#F7DF1E" />
+                                        <path fill="#000000"
+                                            d="M6 17.5l2.2-1.3c.4.8.8 1.4 1.6 1.4.8 0 1.3-.4 1.3-1.3v-6.8h2.6v6.9c0 2.2-1.3 3.3-3.7 3.3-2 0-3.3-1-4-3.2zm8.9-.1l2.2-1.2c.6.9 1.4 1.5 2.4 1.5 1 0 1.6-.5 1.6-1.2 0-.8-.7-1.1-1.9-1.6l-.7-.3c-1.9-.8-3.1-1.9-3.1-4.1 0-2.1 1.6-3.7 4-3.7 1.8 0 3 .7 3.9 2.3l-2.1 1.3c-.4-.8-1-1.2-1.8-1.2-.9 0-1.5.5-1.5 1.1 0 .7.6 1 1.7 1.4l.7.3c2.3 1 3.5 2 3.5 4.3 0 2.5-1.9 4-4.4 4-2.4 0-4-1.2-4.8-3.2z" />
+                                    </svg>
+                                </div>
+                                <span class="orbit-tooltip">JavaScript</span>
+                            </div>
+
+                            <!-- 4. C++ (Right-Bottom) -->
+                            <div class="radial-orbit-item item-4" role="menuitem" data-tooltip="C++">
+                                <div class="orbit-disc">
+                                    <svg viewBox="0 0 24 24" width="22" height="22">
+                                        <path fill="#00599C" d="M12 2l8.7 5v10L12 22l-8.7-5V7L12 2z" />
+                                        <path fill="#FFFFFF"
+                                            d="M11.5 8c-2.5 0-4.5 2-4.5 4.5s2 4.5 4.5 4.5c1.8 0 3.3-1 4-2.4l-1.8-.9c-.5.9-1.3 1.5-2.2 1.5-1.5 0-2.7-1.2-2.7-2.7s1.2-2.7 2.7-2.7c1 0 1.8.6 2.2 1.5l1.8-.9C14.8 9 13.3 8 11.5 8zm5.5 3h1.2V9.8h1.2V11H20.6v1.2h-1.2v1.2h-1.2v-1.2H17V11zm-1.8 3.5h1.2v-1.2h1.2v1.2h1.2v1.2h-1.2v1.2h-1.2v-1.2h-1.2v-1.2z" />
+                                    </svg>
+                                </div>
+                                <span class="orbit-tooltip">C++</span>
+                            </div>
+
+                            <!-- 5. C# / .NET (Bottom-Right) -->
+                            <div class="radial-orbit-item item-5" role="menuitem" data-tooltip="C# (.NET)">
+                                <div class="orbit-disc">
+                                    <svg viewBox="0 0 24 24" width="22" height="22">
+                                        <path fill="#68217A" d="M12 2l8.7 5v10L12 22l-8.7-5V7L12 2z" />
+                                        <path fill="#FFFFFF"
+                                            d="M11 8c-2.5 0-4.5 2-4.5 4.5s2 4.5 4.5 4.5c1.8 0 3.3-1 4-2.4l-1.8-.9c-.5.9-1.3 1.5-2.2 1.5-1.5 0-2.7-1.2-2.7-2.7s1.2-2.7 2.7-2.7c1 0 1.8.6 2.2 1.5l1.8-.9C14.3 9 12.8 8 11 8zm5.5 2.5h1.2V9.2h1V10.5h1.3v1h-1.3v1.8h1.3v1h-1.3v1.3h-1v-1.3h-1.2v1.3h-1v-1.3H14v-1h1.5v-1.8H14v-1h1.5V9.2h1v1.3zm1.2 1H16.5v1.8h1.2v-1.8z" />
+                                    </svg>
+                                </div>
+                                <span class="orbit-tooltip">C# (.NET)</span>
+                            </div>
+
+                            <!-- 6. PHP (Bottom) -->
+                            <div class="radial-orbit-item item-6" role="menuitem" data-tooltip="PHP">
+                                <div class="orbit-disc">
+                                    <svg viewBox="0 0 24 24" width="24" height="24">
+                                        <rect x="1" y="6" width="22" height="12" rx="3" fill="#777BB4"/>
+                                        <path fill="#FFFFFF" d="M5.5 8.5h2.2c1.1 0 1.7.3 2 .8.3.5.3 1.1.1 1.7-.2.7-.6 1.2-1.2 1.5-.6.3-1.4.5-2.3.5h-.9l-.6 2.5H3.2l1.6-7zm1.1 3.1h.9c.5 0 .8-.1 1.1-.3.2-.2.3-.4.4-.8.1-.3.1-.6 0-.8-.1-.2-.3-.3-.7-.3h-.8l-.9 2.2zm7.6-3.1h2.2c1.1 0 1.7.3 2 .8.3.5.3 1.1.1 1.7-.2.7-.6 1.2-1.2 1.5-.6.3-1.4.5-2.3.5h-.9l-.6 2.5h-1.6l1.6-7zm1.1 3.1h.9c.5 0 .8-.1 1.1-.3.2-.2.3-.4.4-.8.1-.3.1-.6 0-.8-.1-.2-.3-.3-.7-.3h-.8l-.9 2.2zm-5.7-3.1l-1.2 4.7h1.4l.3-1.5h1.3c.7 0 1.3-.2 1.6-.5.4-.4.6-.9.7-1.5.2-.7.1-1.2-.1-1.5-.3-.4-.7-.5-1.5-.5H9.6zm1.2 2.1l.3-1.1h.5c.3 0 .5.1.6.2.1.1.2.3.2.5s-.1.4-.2.6c-.2.2-.4.2-.6.2h-.8z"/>
+                                    </svg>
+                                </div>
+                                <span class="orbit-tooltip">PHP</span>
+                            </div>
+
+                            <!-- 7. SQL / Database (Bottom-Left) -->
+                            <div class="radial-orbit-item item-7" role="menuitem" data-tooltip="SQL Database">
+                                <div class="orbit-disc">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <ellipse cx="12" cy="5" rx="9" ry="3" fill="rgba(0,206,201,0.2)"
+                                            stroke="#00cec9" />
+                                        <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" stroke="#00cec9" />
+                                        <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" stroke="#00cec9" />
+                                    </svg>
+                                </div>
+                                <span class="orbit-tooltip">SQL Database</span>
+                            </div>
+
+                            <!-- 8. HTML5 (Left-Bottom) -->
+                            <div class="radial-orbit-item item-8" role="menuitem" data-tooltip="HTML5">
+                                <div class="orbit-disc">
+                                    <svg viewBox="0 0 24 24" width="22" height="22">
+                                        <path fill="#E34F26" d="M3 2l1.6 18.2L12 23l7.4-2.8L21 2H3z" />
+                                        <path fill="#EF652A" d="M12 3.8v17.4l6-2.3 1.4-15.1H12z" />
+                                        <path fill="#FFFFFF"
+                                            d="M12 7.7H7.3l.3 3.3H12v-3.3zm0 6.6H9.7l-.2-2.2H7.2l.4 4.5 4.4 1.2v-3.5zm0-6.6v3.3h3.8l-.4 4.2-3.4.9v3.5l5.3-1.5.7-7.9H12z" />
+                                    </svg>
+                                </div>
+                                <span class="orbit-tooltip">HTML5</span>
+                            </div>
+
+                            <!-- 9. CSS3 (Left-Top) -->
+                            <div class="radial-orbit-item item-9" role="menuitem" data-tooltip="CSS3">
+                                <div class="orbit-disc">
+                                    <svg viewBox="0 0 24 24" width="22" height="22">
+                                        <path fill="#1572B6" d="M3 2l1.6 18.2L12 23l7.4-2.8L21 2H3z" />
+                                        <path fill="#33A9DC" d="M12 3.8v17.4l6-2.3 1.4-15.1H12z" />
+                                        <path fill="#FFFFFF"
+                                            d="M12 7.7H7.3l.3 3.3H12v-3.3zm0 6.6H9.7l-.2-2.2H7.2l.4 4.5 4.4 1.2v-3.5zm0-6.6v3.3h3.8l-.4 4.2-3.4.9v3.5l5.3-1.5.7-7.9H12z" />
+                                    </svg>
+                                </div>
+                                <span class="orbit-tooltip">CSS3</span>
+                            </div>
+
+                            <!-- 10. Git / GitHub (Top-Left) -->
+                            <div class="radial-orbit-item item-10" role="menuitem" data-tooltip="Git & GitHub">
+                                <div class="orbit-disc">
+                                    <svg viewBox="0 0 24 24" width="22" height="22" fill="#F05032">
+                                        <path
+                                            d="M21.6 10.9L13.1 2.4c-.8-.8-2.1-.8-2.9 0L8.1 4.5l3.7 3.7c.9-.3 1.9-.1 2.6.6.7.7.9 1.7.6 2.6l3.5 3.5c.9-.3 1.9-.1 2.6.6.9.9.9 2.4 0 3.3-.9.9-2.4.9-3.3 0-.7-.7-.9-1.7-.6-2.6l-3.3-3.3v7.3c.3.2.5.5.6.8.5 1.1 0 2.4-1.1 2.9-1.1.5-2.4 0-2.9-1.1-.5-1.1 0-2.4 1.1-2.9.4-.2.9-.2 1.3-.1v-7.4c-.4-.1-.9-.1-1.3.1-.9.4-1.9.2-2.6-.6-.9-.9-.9-2.4 0-3.3L7.7 3.6 2.4 8.9c-.8.8-.8 2.1 0 2.9l8.5 8.5c.8.8 2.1.8 2.9 0l7.8-7.8c.8-.8.8-2.1 0-2.9z" />
+                                    </svg>
+                                </div>
+                                <span class="orbit-tooltip">Git & GitHub</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== ABOUT ME SECTION ========== -->
+        <section id="about" class="portfolio-section">
+            <!-- Background Glow Orbs -->
+            <div class="about-glow-orb about-glow-orb-1" aria-hidden="true"></div>
+            <div class="about-glow-orb about-glow-orb-2" aria-hidden="true"></div>
+
+            <div class="section-content">
+                <div class="section-badge">
+                    <span class="badge-dot"></span>
+                    <span>Discover More</span>
+                </div>
+                <h2 class="section-title">
+                    <span class="title-accent"></span> About Me
+                </h2>
+
+                <div class="about-container">
+                    <!-- Left Column: Modern Glassmorphic Image Frame with Floating Badges & Teacher Photo Hover Reveal -->
+                    <div class="about-image-wrapper">
+                        <div class="about-image-card" id="aboutImageCard" title="Hover or hold to view photo with my Teacher">
+                            <div class="about-image-frame">
+                                <img src="images/about.jpg" alt="Sokun En working at desk" class="about-img about-img-default">
+                                <img src="images/about-teacher.jpg" alt="Sokun En standing with Teacher at Angkor University" class="about-img about-img-hover" loading="lazy">
+                                
+                                <!-- Hover / Hold Hint Pill -->
+                                <div class="about-image-hint">
+                                    <span class="hint-pulse-dot"></span>
+                                    <span>Hold to reveal 🎓</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Floating Role Badge -->
+                            <div class="about-floating-badge badge-role">
+                                <span class="badge-icon">💻</span>
+                                <div class="badge-text">
+                                    <span class="badge-role-title">CS Student & Developer</span>
+                                    <span class="badge-role-sub">Building Modern Apps</span>
+                                </div>
+                            </div>
+
+                            <!-- Floating Location Badge -->
+                            <div class="about-floating-badge badge-loc">
+                                <span class="badge-icon">📍</span>
+                                <div class="badge-text">
+                                    <span class="badge-loc-title">Siem Reap</span>
+                                    <span class="badge-loc-sub">Cambodia 🇰🇭</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Bio & Glass Details Cards -->
+                    <div class="about-text-content">
+                        <div class="about-intro-header">
+                            <h3 class="about-subtitle">A Brief <span class="gradient-text">Introduction</span></h3>
+                        </div>
+
+                        <p class="about-description">
+                            Hello! I'm a passionate <strong class="text-highlight">Computer Science</strong> student dedicated to building robust software, scalable web applications, and efficient database architectures. I enjoy turning creative ideas into practical, high-performance applications while continuously expanding my technical skillset.
+                        </p>
+
+                        <!-- Highlights Pills -->
+                        <div class="about-tags">
+                            <span class="about-tag">🚀 Web Development</span>
+                            <span class="about-tag">🗄️ Database Architecture</span>
+                            <span class="about-tag">🧠 Problem Solving</span>
+                            <span class="about-tag">🎨 Clean UI/UX</span>
+                        </div>
+
+                        <!-- 4 Interactive Glassmorphic Detail Cards (NAME, EMAIL, LOCATION, STUDYING) -->
+                        <div class="about-details-grid">
+                            <!-- Name Card -->
+                            <div class="about-detail-card">
+                                <div class="detail-icon icon-name">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                        <circle cx="12" cy="7" r="4"></circle>
+                                    </svg>
+                                </div>
+                                <div class="detail-info">
+                                    <span class="detail-label">FULL NAME</span>
+                                    <span class="detail-value">Sokun En</span>
+                                </div>
+                            </div>
+
+                            <!-- Email Card -->
+                            <div class="about-detail-card">
+                                <div class="detail-icon icon-email-about">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="detail-info">
+                                    <span class="detail-label">EMAIL ADDRESS</span>
+                                    <a href="mailto:sokunen6@gmail.com" class="detail-value detail-link">sokunen6@gmail.com</a>
+                                </div>
+                            </div>
+
+                            <!-- Location Card -->
+                            <div class="about-detail-card">
+                                <div class="detail-icon icon-loc-about">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </div>
+                                <div class="detail-info">
+                                    <span class="detail-label">LOCATION</span>
+                                    <span class="detail-value">Siem Reap, Cambodia</span>
+                                </div>
+                            </div>
+
+                            <!-- Studying Card -->
+                            <div class="about-detail-card">
+                                <div class="detail-icon icon-study-about">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                                        <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                                    </svg>
+                                </div>
+                                <div class="detail-info">
+                                    <span class="detail-label">FIELD OF STUDY</span>
+                                    <span class="detail-value">Computer Science</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CTA Row: View Projects & Get in touch -->
+                        <div class="about-cta-row">
+                            <a href="#projects" class="about-cta-btn primary-cta">
+                                <span>Explore My Projects</span>
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                                    <polyline points="12 5 19 12 12 19"></polyline>
+                                </svg>
+                            </a>
+                            <a href="#contact" class="about-cta-btn secondary-cta">
+                                <span>Let's Talk</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== SKILLS SECTION ========== -->
+        <section id="skills" class="portfolio-section">
+            <div class="section-content">
+                <h2 class="section-title">
+                    <span class="title-accent"></span> My Skills
+                </h2>
+                <div class="skills-container">
+                    <div class="skill-box">
+                        <div class="skill-icon">🐍</div>
+                        <div class="skill-content">
+                            <div class="skill-header">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-box">
+                        <div class="skill-icon">☕</div>
+                        <div class="skill-content">
+                            <div class="skill-header">
+                                <span class="skill-name">Java</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-box">
+                        <div class="skill-icon">🐘</div>
+                        <div class="skill-content">
+                            <div class="skill-header">
+                                <span class="skill-name">PHP</span>
+                                <span class="skill-percent">80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-box">
+                        <div class="skill-icon">🗄️</div>
+                        <div class="skill-content">
+                            <div class="skill-header">
+                                <span class="skill-name">DBMS</span>
+                                <span class="skill-percent">80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="80%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-box">
+                        <div class="skill-icon">🌐</div>
+                        <div class="skill-content">
+                            <div class="skill-header">
+                                <span class="skill-name">Web Development</span>
+                                <span class="skill-percent">95%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="95%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-box">
+                        <div class="skill-icon">⚙️</div>
+                        <div class="skill-content">
+                            <div class="skill-header">
+                                <span class="skill-name">C++</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-box">
+                        <div class="skill-icon">🔷</div>
+                        <div class="skill-content">
+                            <div class="skill-header">
+                                <span class="skill-name">C#</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="85%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-box">
+                        <div class="skill-icon">🤖</div>
+                        <div class="skill-content">
+                            <div class="skill-header">
+                                <span class="skill-name">AI</span>
+                                <span class="skill-percent">95%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="95%"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skill-box">
+                        <div class="skill-icon">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                            </svg>
+                        </div>
+                        <div class="skill-content">
+                            <div class="skill-header">
+                                <span class="skill-name">Git & GitHub</span>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress" data-width="90%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== PROJECTS SECTION ========== -->
+        <section id="projects" class="portfolio-section">
+            <div class="section-content">
+                <h2 class="section-title">
+                    <span class="title-accent"></span> My Projects
+                </h2>
+                <div class="projects-grid">
+
+                    <div class="project-card">
+                        <div class="project-image-wrapper">
+                            <img src="images/Web.png" alt="Web Design Portfolio Project" class="project-image">
+                            <div class="project-overlay">
+                                <a href="https://github.com/sokunen6-byte/portfolio" target="_blank" rel="noopener noreferrer" class="project-link" aria-label="View Web Design project on GitHub">🔗</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span class="tag">HTML</span>
+                                <span class="tag">CSS</span>
+                                <span class="tag">JavaScript</span>
+                            </div>
+                            <h3>Web Design</h3>
+                            <p>This system I use AI almost 90% to build.</p>
+                            <a href="https://github.com/sokunen6-byte/portfolio" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm">View Project →</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image-wrapper">
+                            <img src="images/Net.png" alt="Library Management System Project" class="project-image">
+                            <div class="project-overlay">
+                                <a href="#" class="project-link" aria-label="View Library Management System project">🔗</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span class="tag">C# (.NET)</span>
+                                <span class="tag">SSMS</span>
+                            </div>
+                            <h3>Library Management System</h3>
+                            <p>A Library Management System is built to manage all library operations digitally instead
+                                of using paper records.</p>
+                            <a href="#" class="btn btn-primary btn-sm">View Project →</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image-wrapper">
+                            <img src="images/Soon.jpg" alt="Upcoming Software System Project" class="project-image">
+                            <div class="project-overlay">
+                                <a href="#" class="project-link" aria-label="View upcoming software project">🔗</a>
+                            </div>
+                        </div>
+                        <div class="project-info">
+                            <div class="project-tags">
+                                <span class="tag">?</span>
+                                <span class="tag">?</span>
+                                <span class="tag">?</span>
+                            </div>
+                            <h3>Super Best Software System</h3>
+                            <p>The best system has never existed before will release on this Galaxy.</p>
+                            <a href="#" class="btn btn-primary btn-sm">Developing...</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- ========== CONTACT SECTION ========== -->
+        <section id="contact" class="portfolio-section">
+            <!-- Background Glow Orbs -->
+            <div class="contact-glow-orb contact-glow-orb-1" aria-hidden="true"></div>
+            <div class="contact-glow-orb contact-glow-orb-2" aria-hidden="true"></div>
+
+            <div class="section-content">
+                <div class="contact-header-bar">
+                    <div class="contact-header-text">
+                        <div class="section-badge">
+                            <span class="badge-dot"></span>
+                            <span>Get In Touch</span>
+                        </div>
+                        <h2 class="section-title contact-section-title">
+                            <span class="title-accent"></span> Contact Me
+                        </h2>
+                    </div>
+
+                    <!-- Horizontal UIverse Social Links with Tooltips Under Icons -->
+                    <div class="social-bar-wrapper">
+                        <div class="social-click-hint">
+                            <span class="hint-text">Click Here</span>
+                            <svg class="click-hint-arrow" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                <line x1="12" y1="5" x2="12" y2="19"></line>
+                                <polyline points="19 12 12 19 5 12"></polyline>
+                            </svg>
+                        </div>
+                        <ul class="contact-social-horizontal social-links-uiverse" aria-label="Social links">
+                            <li class="icon-content">
+                                <a href="https://www.facebook.com/share/19D2jQP2CJ/" data-social="facebook" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
+                                    <div class="filled"></div>
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                                    </svg>
+                                </a>
+                                <div class="tooltip">Facebook</div>
+                            </li>
+                            <li class="icon-content">
+                                <a href="https://t.me/En126u" id="telegramIconBtn" data-social="telegram" aria-label="Telegram" role="button" title="View Telegram QR Code">
+                                    <div class="filled"></div>
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
+                                    </svg>
+                                </a>
+                                <div class="tooltip">Telegram</div>
+                            </li>
+                            <li class="icon-content">
+                                <a href="https://github.com/sokunen6-byte" data-social="github" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
+                                    <div class="filled"></div>
+                                    <svg viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12" />
+                                    </svg>
+                                </a>
+                                <div class="tooltip">GitHub</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="contact-wrapper">
+                    <!-- Left Column: Contact Info & Cards -->
+                    <div class="contact-info">
+                        <div class="availability-badge">
+                            <span class="status-pulse"></span>
+                            <span>Available for new projects & opportunities</span>
+                        </div>
+
+                        <h3 class="contact-headline">Let's Build Something <span class="gradient-text">Extraordinary</span></h3>
+                        <p class="contact-subtext">
+                            Have a project in mind, a question about my work, or looking for a passionate developer to join your team? I'm always open to discussing new opportunities.
+                        </p>
+
+                        <div class="contact-cards">
+                            <!-- Email Card -->
+                            <div class="contact-card email-card">
+                                <div class="contact-card-icon icon-email">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                        <polyline points="22,6 12,13 2,6"></polyline>
+                                    </svg>
+                                </div>
+                                <div class="contact-card-body">
+                                    <span class="contact-card-label">EMAIL ADDRESS</span>
+                                    <a href="mailto:sokunen6@gmail.com" class="contact-card-value">sokunen6@gmail.com</a>
+                                </div>
+                                <button type="button" class="copy-btn" id="copyEmailBtn" data-copy="sokunen6@gmail.com" aria-label="Copy email address" title="Copy email">
+                                    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+                                        <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                                    </svg>
+                                    <span class="copy-tooltip">Copy</span>
+                                </button>
+                            </div>
+
+                            <!-- Location Card -->
+                            <div class="contact-card location-card">
+                                <div class="contact-card-icon icon-location">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+                                        <circle cx="12" cy="10" r="3"></circle>
+                                    </svg>
+                                </div>
+                                <div class="contact-card-body">
+                                    <span class="contact-card-label">LOCATION</span>
+                                    <span class="contact-card-value">Siem Reap, Cambodia</span>
+                                </div>
+                            </div>
+
+                            <!-- Phone Card -->
+                            <div class="contact-card phone-card">
+                                <div class="contact-card-icon icon-phone">
+                                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                    </svg>
+                                </div>
+                                <div class="contact-card-body">
+                                    <span class="contact-card-label">PHONE NUMBERS</span>
+                                    <div class="phone-links">
+                                        <a href="tel:+85587313767" class="contact-card-value">+855 87 313 767</a>
+                                        <span class="phone-sep">•</span>
+                                        <a href="tel:+85566611993" class="contact-card-value">066 611 993</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Premium Contact Form -->
+                    <div class="contact-container">
+                        <div class="form-header">
+                            <div class="form-title-wrap">
+                                <h3 class="form-title">Send a Message</h3>
+                                <p class="form-subtitle">Fill out the form below and I'll get back to you shortly.</p>
+                            </div>
+                            <span class="response-badge">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                    <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                                </svg>
+                                Quick reply
+                            </span>
+                        </div>
+
+                        <form class="contact-form" id="contactForm" action="#" method="POST" autocomplete="on">
+                            <div class="form-row">
+                                <div class="input-group">
+                                    <div class="input-icon">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                                            <circle cx="12" cy="7" r="4"></circle>
+                                        </svg>
+                                    </div>
+                                    <input type="text" id="name" name="name" placeholder=" " required autocomplete="name">
+                                    <label for="name">Your Name <span class="required-star">*</span></label>
+                                </div>
+
+                                <div class="input-group">
+                                    <div class="input-icon">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                                            <polyline points="22,6 12,13 2,6"></polyline>
+                                        </svg>
+                                    </div>
+                                    <input type="email" id="email" name="email" placeholder=" " required autocomplete="email">
+                                    <label for="email">Your Email <span class="required-star">*</span></label>
+                                </div>
+                            </div>
+
+                            <div class="input-group">
+                                <div class="input-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="4" y1="9" x2="20" y2="9"></line>
+                                        <line x1="4" y1="15" x2="20" y2="15"></line>
+                                        <line x1="10" y1="3" x2="8" y2="21"></line>
+                                        <line x1="16" y1="3" x2="14" y2="21"></line>
+                                    </svg>
+                                </div>
+                                <input type="text" id="subject" name="subject" placeholder=" " autocomplete="off">
+                                <label for="subject">Subject</label>
+                            </div>
+
+                            <div class="input-group textarea-group">
+                                <div class="input-icon textarea-icon">
+                                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+                                    </svg>
+                                </div>
+                                <textarea id="message" name="message" rows="4" placeholder=" " required></textarea>
+                                <label for="message">Your Message <span class="required-star">*</span></label>
+                            </div>
+
+                            <button type="submit" class="btn-submit" id="submitBtn">
+                                <span class="btn-submit-bg"></span>
+                                <span class="btn-submit-content">
+                                    <span class="btn-text">Send Message</span>
+                                    <svg class="btn-send-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                                    </svg>
+                                </span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Toast Notification Container -->
+            <div class="contact-toast" id="contactToast" role="status" aria-live="polite">
+                <div class="toast-icon">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                </div>
+                <div class="toast-content">
+                    <div class="toast-title">Message Sent!</div>
+                    <div class="toast-message">Thank you for reaching out. I'll get back to you soon.</div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========== FOOTER (Global Footer) ========== -->
+    <footer class="portfolio-footer">
+        <p class="footer-copyright">&copy; 2026 CS En. All rights reserved.</p>
+    </footer>
+
+    <!-- ========== TELEGRAM QR CODE MODAL ========== -->
+    <div class="qr-modal-overlay" id="telegramQrModal" aria-hidden="true" role="dialog" aria-modal="true"
+        aria-labelledby="qrModalTitle">
+        <div class="qr-modal-card">
+            <button class="qr-modal-close" id="closeQrModalBtn" aria-label="Close modal" type="button">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+            <div class="qr-modal-header">
+                <div class="qr-telegram-badge">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
+                    </svg>
+                </div>
+                <h3 id="qrModalTitle" class="qr-modal-title">Telegram QR Code</h3>
+                <p class="qr-modal-username">@En126u</p>
+                <p class="qr-modal-subtitle">Scan with your phone camera or Telegram app to connect</p>
+            </div>
+            <div class="qr-code-wrapper">
+                <div class="qr-code-box">
+                    <img src="images/telegram-qr.svg" alt="Telegram QR Code for @En126u" class="qr-code-image"
+                        id="qrCodeImage">
+                    <div class="qr-center-logo">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="#0088cc">
+                            <path
+                                d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="qr-modal-actions">
+                <a href="https://t.me/En126u" target="_blank" rel="noopener noreferrer" class="btn-telegram-direct"
+                    id="openTelegramDirectBtn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                        <path
+                            d="m20.665 3.717-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701h-.002l-.002.001-.314 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.434z" />
+                    </svg>
+                    <span>Open in Telegram</span>
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- ========== 3D JAVASCRIPT STARS & ANIMATION CANVASES ========== -->
+    <div id="canvas-container" class="stars-canvas-container"></div>
+    <canvas id="rainCanvas" class="rain-canvas"></canvas>
+    <canvas id="cursorCanvas" class="cursor-canvas"></canvas>
+
+</body>
+
+</html>
